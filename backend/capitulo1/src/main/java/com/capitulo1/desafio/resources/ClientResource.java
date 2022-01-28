@@ -1,7 +1,6 @@
 package com.capitulo1.desafio.resources;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.capitulo1.desafio.dto.ClientDTO;
-import com.capitulo1.desafio.entities.Client;
 import com.capitulo1.desafio.services.ClientService;
 
 @RestController
@@ -28,9 +26,9 @@ public class ClientResource {
 	}
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Optional<Client>> findById(@PathVariable Long id) {
-		Optional<Client> client = clientService.findById(id);
-		return ResponseEntity.ok().body(client);
-	}
+	public ResponseEntity<ClientDTO> findById(@PathVariable Long id) {
+		ClientDTO clientDto = clientService.findById(id);
+		return ResponseEntity.ok().body(clientDto);
+	} 
 
 }
